@@ -1,20 +1,13 @@
+mod error;
 mod lumps;
+mod parser;
+mod wad;
 
-enum WadType {
-    Internal,
-    Patch,
-}
+pub use error::Error;
+pub use parser::WadParser;
+pub use wad::{Wad, WadType};
 
-struct WadDirectory {
-    file_location: i32,
-    size: i32,
-    name: String,
-}
-
-struct Wad {
-    lump_count: i32,
-    directory_location: i32,
-}
+pub type Result<T> = std::result::Result<T, error::Error>;
 
 #[cfg(test)]
 mod tests {
