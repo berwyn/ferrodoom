@@ -4,6 +4,8 @@ use thiserror::Error;
 pub enum Error {
     #[error(transparent)]
     WadParse(#[from] WadParseError),
+    #[error(transparent)]
+    LumpParse(#[from] LumpParseError),
 }
 
 #[derive(Debug, Error)]
@@ -14,4 +16,12 @@ pub enum WadParseError {
     InvalidHeaderData,
     #[error("The directory entry is invalid")]
     InvalidDirectoryEntry,
+}
+
+#[derive(Debug, Error)]
+pub enum LumpParseError {
+    #[error("No data provided")]
+    NoData,
+    #[error("Unknown lump type")]
+    UnknownType,
 }

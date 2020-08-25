@@ -1,6 +1,6 @@
 use bitflags::bitflags;
 
-pub(crate) enum ThingType {}
+pub enum ThingType {}
 
 bitflags! {
     pub(crate) struct ThingFlags: u8 {

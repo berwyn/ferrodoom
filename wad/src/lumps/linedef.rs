@@ -1,7 +1,7 @@
 use bitflags::bitflags;
 
 bitflags! {
-    pub(crate) struct LinedefFlags: u16 {
+    pub struct LinedefFlags: u16 {
         const BlocksPlayersAndMonsters = 0x01;
         const BlocksMonsters = 0x02;
         const TwoSided = 0x04;
@@ -25,7 +25,7 @@ bitflags! {
     }
 }
 
-pub(crate) struct Linedef {
+pub struct Linedef {
     start_vertex: i16,
     end_vertex: i16,
     flags: LinedefFlags,

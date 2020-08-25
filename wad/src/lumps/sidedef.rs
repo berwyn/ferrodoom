@@ -1,4 +1,4 @@
-pub(crate) struct Sidedef {
+pub struct Sidedef {
     offset: (i16, i16),
     upper_texture_name: String,
     lower_texture_name: String,

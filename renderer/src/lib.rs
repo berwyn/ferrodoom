@@ -1,3 +1,4 @@
+mod bsp;
 mod error;
 mod renderer;
 

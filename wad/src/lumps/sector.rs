@@ -1,4 +1,4 @@
-pub(crate) enum SectorType {
+pub enum SectorType {
     Normal,
     LightBlinkRandom,
     LightBlinkHalfSecond,
@@ -17,7 +17,7 @@ pub(crate) enum SectorType {
     LightFlicker,
 }
 
-pub(crate) struct Sector {
+pub struct Sector {
     floor_height: i16,
     ceiling_height: i16,
     floor_texture_name: String,

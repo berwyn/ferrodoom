@@ -28,6 +28,7 @@ impl WadParser {
             lump_count,
             directory_location,
             directory,
+            data: self.data,
         })
     }
 

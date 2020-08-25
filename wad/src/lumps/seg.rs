@@ -1,4 +1,4 @@
-pub(crate) struct Seg {
+pub struct Seg {
     starting_vertex: i16,
     ending_vertex: i16,
     angle: i16,

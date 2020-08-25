@@ -4,6 +4,7 @@ mod parser;
 mod wad;
 
 pub use crate::error::Error;
+pub use crate::lumps::Lump;
 pub use crate::parser::WadParser;
 pub use crate::wad::{Wad, WadType};
 
