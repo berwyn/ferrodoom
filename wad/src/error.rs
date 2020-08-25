@@ -24,4 +24,6 @@ pub enum LumpParseError {
     NoData,
     #[error("Unknown lump type")]
     UnknownType,
+    #[error("Invalid entry")]
+    InvalidEntry(#[from] std::io::Error),
 }

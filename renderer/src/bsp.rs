@@ -1,7 +1,7 @@
-use wad::{Lump, Wad};
+use wad::{Node, Wad};
 
 pub struct BSPNode {
-    lump: Box<dyn Lump>,
+    lump: Node,
     children: Vec<BSPNode>,
 }
 

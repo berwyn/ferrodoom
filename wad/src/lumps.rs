@@ -24,4 +24,37 @@ impl From<&str> for LumpType {
     }
 }
 
+pub enum NamedLumps {
+    Things,
+    Linedefs,
+    Sidedefs,
+    Vertices,
+    Segments,
+    Subsectors,
+    Nodes,
+    Sectors,
+    Reject,
+    Blockmap,
+    Behavior,
+}
+
+impl std::string::ToString for NamedLumps {
+    fn to_string(&self) -> String {
+        match self {
+            NamedLumps::Things => "THINGS",
+            NamedLumps::Linedefs => "LINEDEFS",
+            NamedLumps::Sidedefs => "SIDEDEFS",
+            NamedLumps::Vertices => "VERTEXES",
+            NamedLumps::Segments => "SEGS",
+            NamedLumps::Subsectors => "SSECTORS",
+            NamedLumps::Nodes => "NODES",
+            NamedLumps::Sectors => "SECTORS",
+            NamedLumps::Reject => "REJECT",
+            NamedLumps::Blockmap => "BLOCKMAP",
+            NamedLumps::Behavior => "BEHAVIOR",
+        }
+        .into()
+    }
+}
+
 pub trait Lump: std::fmt::Debug {}

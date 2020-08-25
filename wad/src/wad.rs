@@ -32,7 +32,11 @@ impl Wad {
         let entry = self.directory.get(name)?;
 
         tracing::debug!("Found entry for {}", name);
-        tracing::debug!("Seeking to {}", &entry.position);
+        tracing::debug!(
+            "Reading {} bytes starting at {}",
+            &entry.size,
+            &entry.position
+        );
 
         if entry.size == 0 {
             return Some(Box::new(crate::lumps::marker::Virtual));
@@ -43,12 +47,7 @@ impl Wad {
         let end_position = position + entry.size as usize;
         let range = position..end_position;
 
-        tracing::debug!(
-            "Building slice from {} to {}: {:?}",
-            position,
-            end_position,
-            range
-        );
+        tracing::debug!("Building slice from {:?}", range);
 
         LumpParser::new(&self.data[range]).build(name.into()).ok()
     }
