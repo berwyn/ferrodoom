@@ -1,7 +1,6 @@
 use std::{collections::HashMap, io::Cursor};
 
 use byteorder::{ByteOrder, LittleEndian, ReadBytesExt};
-use pad::PadStr;
 
 use crate::{
     error::WadParseError,
@@ -66,8 +65,14 @@ impl WadParser {
             let size = cursor
                 .read_u32::<LittleEndian>()
                 .map_err(|_| WadParseError::InvalidDirectoryEntry)?;
-            let name = String::from_utf8(chunk[0x08..].into())
-                .map_err(|_| WadParseError::InvalidDirectoryEntry)?;
+            let name = String::from_utf8(
+                chunk[0x08..]
+                    .iter()
+                    .map(|i| *i)
+                    .filter(|i| *i != 0)
+                    .collect(),
+            )
+            .map_err(|_| WadParseError::InvalidDirectoryEntry)?;
 
             let entry = WadDirectoryEntry {
                 position,
